@@ -2,6 +2,8 @@
 
 package lesson6.task1
 
+import lesson4.task1.isPalindrome
+
 // Урок 6: разбор строк, исключения
 // Максимальное количество баллов = 13
 // Рекомендуемое количество баллов = 11
@@ -162,7 +164,25 @@ fun firstDuplicateIndex(str: String): Int = TODO()
  * или пустую строку при нарушении формата строки.
  * Все цены должны быть больше нуля либо равны нулю.
  */
-fun mostExpensive(description: String): String = TODO()
+fun mostExpensive(description: String): String {
+    var name = ""
+    var price = 0.0
+    var parts = description.split("; ")
+    return try {
+        for (element in parts.indices) {
+            val pair = parts[element].split(" ")
+            if (price <= pair[1].toDouble()) {
+                price = pair[1].toDouble()
+                name = pair[0]
+            }
+        }
+        return name
+    } catch (e: NumberFormatException) {
+        ""
+    } catch (a: IndexOutOfBoundsException) {
+        ""
+    }
+}
 
 /**
  * Сложная (6 баллов)
@@ -175,7 +195,24 @@ fun mostExpensive(description: String): String = TODO()
  *
  * Вернуть -1, если roman не является корректным римским числом
  */
-fun fromRoman(roman: String): Int = TODO()
+fun fromRoman(roman: String): Int {
+    var letters = listOf("CM", "M", "CD", "D", "XC", "C", "XL", "L", "IX", "X", "IV", "V", "I")
+    var numbers = listOf(900, 1000, 400, 500, 90, 100, 40, 50, 9, 10, 4, 5, 1)
+    var romanstring = roman
+    var number = 0
+    if (roman == "")
+        return -1
+    for (i in letters.indices) {
+        val element = letters[i]
+        while (element in romanstring) {
+            romanstring = romanstring.replaceFirst(element, "")
+            number += numbers[i]
+        }
+    }
+    return if (romanstring == "") number
+    else -1
+}
+
 
 /**
  * Очень сложная (7 баллов)

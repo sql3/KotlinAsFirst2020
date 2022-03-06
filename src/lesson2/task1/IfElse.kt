@@ -136,6 +136,7 @@ fun rookOrBishopThreatens(
     else (0)
 }
 
+
 /**
  * Простая (2 балла)
  *

@@ -136,6 +136,7 @@ class Tests {
     @Test
     @Tag("3")
     fun polynom() {
+        assertEquals(14000, polynom(listOf(-1000, -1000), -15))
         assertEquals(0, polynom(listOf(), 1000))
         assertEquals(42, polynom(listOf(42), -1000))
         assertEquals(13, polynom(listOf(3, 2), 5))
@@ -150,6 +151,10 @@ class Tests {
         assertArrayEquals(
             listOf(3).toIntArray(),
             accumulate(arrayListOf(3)).toIntArray()
+        )
+        assertArrayEquals(
+            listOf(0).toIntArray(),
+            accumulate(arrayListOf(0)).toIntArray()
         )
         assertArrayEquals(
             listOf(1, 3, 6, 10).toIntArray(),
@@ -181,6 +186,7 @@ class Tests {
     @Test
     @Tag("3")
     fun convert() {
+        assertEquals(listOf(0), convert(0, 2))
         assertEquals(listOf(1), convert(1, 2))
         assertEquals(listOf(1, 2, 1, 0), convert(100, 4))
         assertEquals(listOf(1, 3, 12), convert(250, 14))
@@ -190,6 +196,7 @@ class Tests {
     @Test
     @Tag("4")
     fun convertToString() {
+        assertEquals("0", convertToString(0, 2))
         assertEquals("1", convertToString(1, 2))
         assertEquals("1210", convertToString(100, 4))
         assertEquals("13c", convertToString(250, 14))

@@ -2,11 +2,20 @@
 
 package lesson4.task1
 
+import kotlinx.html.I
 import lesson1.task1.discriminant
+<<<<<<< .merge_file_a17472
 import lesson1.task1.sqr
 import lesson3.task1.digitNumber
+=======
+import lesson3.task1.digitNumber
+import lesson6.task1.firstDuplicateIndex
+import java.util.*
+import kotlin.math.pow
+>>>>>>> .merge_file_a16784
 import kotlin.math.sqrt
 import kotlin.math.pow
+
 
 // Урок 4: списки
 // Максимальное количество баллов = 12
@@ -123,6 +132,7 @@ fun buildSumExample(list: List<Int>) = list.joinToString(separator = " + ", post
  * по формуле abs = sqrt(a1^2 + a2^2 + ... + aN^2).
  * Модуль пустого вектора считать равным 0.0.
  */
+<<<<<<< .merge_file_a17472
 fun abs(v: List<Double>): Double {
     if (v.isEmpty()) return 0.0
     var s = 0.0
@@ -131,12 +141,16 @@ fun abs(v: List<Double>): Double {
     }
     return sqrt(s)
 }
+=======
+fun abs(v: List<Double>): Double = sqrt(v.sumOf { it * it })
+>>>>>>> .merge_file_a16784
 
 /**
  * Простая (2 балла)
  *
  * Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
  */
+<<<<<<< .merge_file_a17472
 fun mean(list: List<Double>): Double {
     if (list.isEmpty()) return 0.0
     var s = 0.0
@@ -147,6 +161,10 @@ fun mean(list: List<Double>): Double {
     }
     return (s / k)
 }
+=======
+fun mean(list: List<Double>): Double = if (list.isNotEmpty()) list.sum() / list.size else 0.0
+
+>>>>>>> .merge_file_a16784
 
 /**
  * Средняя (3 балла)
@@ -157,6 +175,7 @@ fun mean(list: List<Double>): Double {
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
 fun center(list: MutableList<Double>): MutableList<Double> {
+<<<<<<< .merge_file_a17472
     if (list.isEmpty()) return list
     var s = 0.0
     var k = 0
@@ -167,6 +186,11 @@ fun center(list: MutableList<Double>): MutableList<Double> {
     for (i in list.indices) {
         list[i] -= s / k
     }
+=======
+    val arithmeticMean = mean(list)
+    for (i in 0 until list.size)
+        list[i] -= arithmeticMean
+>>>>>>> .merge_file_a16784
     return list
 }
 
@@ -178,12 +202,20 @@ fun center(list: MutableList<Double>): MutableList<Double> {
  * C = a1b1 + a2b2 + ... + aNbN. Произведение пустых векторов считать равным 0.
  */
 fun times(a: List<Int>, b: List<Int>): Int {
+<<<<<<< .merge_file_a17472
     if (a.isEmpty() || b.isEmpty()) return 0
     var s = 0
     for (i in a.indices) {
         s += a[i] * b[i]
     }
     return s
+=======
+    var c = 0
+    for (i in a.indices)
+        c += a[i] * b[i]
+    return c
+
+>>>>>>> .merge_file_a16784
 }
 
 /**
@@ -195,6 +227,7 @@ fun times(a: List<Int>, b: List<Int>): Int {
  * Значение пустого многочлена равно 0 при любом x.
  */
 fun polynom(p: List<Int>, x: Int): Int {
+<<<<<<< .merge_file_a17472
     if (p.isEmpty()) return 0
     var y = x
     var s = p[0]
@@ -204,6 +237,17 @@ fun polynom(p: List<Int>, x: Int): Int {
     }
     return s
 }
+=======
+    var xstep = 1
+    var pol = 0
+    for (i in p.indices) {
+        pol += p[i] * xstep
+        xstep *= x
+    }
+    return pol
+}
+
+>>>>>>> .merge_file_a16784
 
 /**
  * Средняя (3 балла)
@@ -216,6 +260,7 @@ fun polynom(p: List<Int>, x: Int): Int {
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
 fun accumulate(list: MutableList<Int>): MutableList<Int> {
+<<<<<<< .merge_file_a17472
     if (list.isEmpty()) return list
     var s = 1
     var box: Int
@@ -226,6 +271,16 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
     }
     return list
 }
+=======
+    var previousElement = 0
+    for (i in 0 until list.size) {
+        list[i] += previousElement
+        previousElement = list[i]
+    }
+    return list
+}
+
+>>>>>>> .merge_file_a16784
 
 /**
  * Средняя (3 балла)
@@ -234,6 +289,7 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
  * Результат разложения вернуть в виде списка множителей, например 75 -> (3, 5, 5).
  * Множители в списке должны располагаться по возрастанию.
  */
+<<<<<<< .merge_file_a17472
 fun pr(n: Int): Boolean {
     var d = 2
     while (d * d <= n) {
@@ -258,6 +314,18 @@ fun factorize(n: Int): List<Int> {
     }
     mas.sorted()
     return mas
+=======
+fun factorize(n: Int): List<Int> {
+    var num = n
+    val list = mutableListOf<Int>()
+    for (i in 2 until num + 1) {
+        while (num % i == 0) {
+            num /= i
+            list.add(i)
+        }
+    }
+    return list
+>>>>>>> .merge_file_a16784
 }
 
 /**
@@ -285,6 +353,7 @@ fun factorizeToString(n: Int): String {
     return mas.joinToString(separator = "*")
 }
 
+
 /**
  * Средняя (3 балла)
  *
@@ -293,6 +362,7 @@ fun factorizeToString(n: Int): String {
  * например: n = 100, base = 4 -> (1, 2, 1, 0) или n = 250, base = 14 -> (1, 3, 12)
  */
 fun convert(n: Int, base: Int): List<Int> {
+<<<<<<< .merge_file_a17472
     if (n < base) return listOf(n)
     var mas = emptyList<Int>()
     var ch = n
@@ -301,6 +371,15 @@ fun convert(n: Int, base: Int): List<Int> {
         ch /= base
     }
     return mas.reversed()
+=======
+    var n = n
+    val list = mutableListOf<Int>()
+    do {
+        list.add(n % base)
+        n /= base
+    } while (n > 0)
+    return list.reversed()
+>>>>>>> .merge_file_a16784
 }
 
 /**
@@ -315,6 +394,7 @@ fun convert(n: Int, base: Int): List<Int> {
  * (например, n.toString(base) и подобные), запрещается.
  */
 fun convertToString(n: Int, base: Int): String {
+<<<<<<< .merge_file_a17472
     if ((n < base) && (base <= 10)) return "$n"
     var mas = emptyList<String>()
     var ch = n
@@ -329,6 +409,15 @@ fun convertToString(n: Int, base: Int): String {
     mas = mas.reversed()
     val otv = mas.joinToString(separator = "")
     return otv.toLowerCase()
+=======
+    val list = convert(n, base)
+    var string = ""
+    val str = "0123456789abcdefghijklmnopqrstuvwxyz"
+    for (element in list) {
+        string += str[element]
+    }
+    return string
+>>>>>>> .merge_file_a16784
 }
 
 /**
@@ -339,6 +428,7 @@ fun convertToString(n: Int, base: Int): String {
  * Например: digits = (1, 3, 12), base = 14 -> 250
  */
 fun decimal(digits: List<Int>, base: Int): Int {
+<<<<<<< .merge_file_a17472
     var k = digits.size - 1
     var s = 0
     for (i in digits.indices) {
@@ -346,6 +436,16 @@ fun decimal(digits: List<Int>, base: Int): Int {
         k--
     }
     return s
+=======
+    var n = 0.0
+    var basepow = 1
+    val dig = digits.reversed()
+    for (i in digits.indices) {
+        n += dig[i] * basepow
+        basepow *= base
+    }
+    return n.toInt()
+>>>>>>> .merge_file_a16784
 }
 
 /**
@@ -385,6 +485,7 @@ fun decimalFromString(str: String, base: Int): Int {
  * 90 = XC, 100 = C, 400 = CD, 500 = D, 900 = CM, 1000 = M.
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
+<<<<<<< .merge_file_a17472
 fun col(n: Int): Int {
     var k = 0
     var x = n
@@ -446,6 +547,42 @@ fun roman(n: Int): String {
         }
     }
 }
+=======
+fun roman(n: Int): String {
+    val listOfLetters = listOf<String>(
+        "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX",
+        "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC",
+        "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM",
+        "M"
+    )
+    val listOfNumbers = listOf<Int>(
+        1, 2, 3, 4, 5, 6, 7, 8, 9,
+        10, 20, 30, 40, 50, 60, 70, 80, 90,
+        100, 200, 300, 400, 500, 600, 700, 800, 900,
+        1000
+    )
+
+    var number = n
+    val amount = n.toString().length
+    var string = ""
+    var pow = 10.0.pow(amount).toInt()
+    for (i in amount downTo 0) {
+        var firstNum = (number / pow) * pow
+        number %= pow
+        pow /= 10
+        while (firstNum > 1000) {
+            string += "M"
+            firstNum -= 1000
+        }
+        if (firstNum > 0) {
+            string += listOfLetters[listOfNumbers.indexOf(firstNum)]
+        }
+    }
+    return string
+}
+
+
+>>>>>>> .merge_file_a16784
 
 /**
  * Очень сложная (7 баллов)
@@ -454,6 +591,7 @@ fun roman(n: Int): String {
  * Например, 375 = "триста семьдесят пять",
  * 23964 = "двадцать три тысячи девятьсот шестьдесят четыре"
  */
+<<<<<<< .merge_file_a17472
 fun un(n: Int): String {
     when (n) {
         1 -> return "один"
@@ -596,3 +734,6 @@ fun russian(n: Int): String {
     } else hun(x)
 }
 
+=======
+fun russian(n: Int): String = TODO()
+>>>>>>> .merge_file_a16784
