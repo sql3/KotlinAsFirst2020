@@ -22,19 +22,8 @@ fun pointInsideCircle(x: Double, y: Double, x0: Double, y0: Double, r: Double) =
  * Четырехзначное число назовем счастливым, если сумма первых двух ее цифр равна сумме двух последних.
  * Определить, счастливое ли заданное число, вернуть true, если это так.
  */
-<<<<<<< .merge_file_a17992
-fun isNumberHappy(number: Int): Boolean {
-    val z = number.toString()
-    val ch1 = z[0].digitToInt()
-    val ch2 = z[1].digitToInt()
-    val ch3 = z[2].digitToInt()
-    val ch4 = z[3].digitToInt()
-    return (ch1 + ch2) == (ch3 + ch4)
-}
-=======
 fun isNumberHappy(number: Int): Boolean =
     (number / 100 % 10) + (number / 1000 % 10) == (number % 10) + (number / 10 % 10)
->>>>>>> .merge_file_a36464
 
 /**
  * Простая (2 балла)
@@ -54,7 +43,6 @@ fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean =
  * Вернуть число дней в этом месяце этого года по григорианскому календарю.
  */
 fun daysInMonth(month: Int, year: Int): Int {
-<<<<<<< .merge_file_a17992
     val g = if (year % 4 == 0) {
         !((year % 100 == 0) && (year % 400 != 0))
     } else false
@@ -63,14 +51,6 @@ fun daysInMonth(month: Int, year: Int): Int {
         if (g) 29
         else 28
     } else 30
-=======
-    return when {
-        (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) -> 31
-        (month == 2 && ((year % 100 == 0 && year % 400 == 0) || (year % 100 != 0 && year % 4 == 0))) -> 29
-        (month == 2) -> 28
-        else -> 30
-    }
->>>>>>> .merge_file_a36464
 }
 
 /**
@@ -98,16 +78,7 @@ fun circleInside(
  * Вернуть true, если кирпич пройдёт
  */
 fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
-<<<<<<< .merge_file_a17992
     val mas = arrayOf(a, b, c)
     mas.sort()
     return !((mas[0] > min(r, s)) || (mas[1] > max(r, s)))
 }
-=======
-    return if (a <= r && (b <= s || c <= s)) {
-        true
-    } else if (b <= r && (a <= s || c <= s)) {
-        true
-    } else c <= r && (b <= s || a <= s)
-}
->>>>>>> .merge_file_a36464

@@ -73,7 +73,6 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun digitNumber(n: Int): Int {
-<<<<<<< .merge_file_a18048
     var x = abs(n)
     if (x / 10 == 0) return 1
     var k = 0
@@ -82,15 +81,6 @@ fun digitNumber(n: Int): Int {
         x /= 10
     }
     return k
-=======
-    var N = n
-    var num = 1
-    while (N / 10 != 0) {
-        N /= 10
-        num += 1
-    }
-    return num
->>>>>>> .merge_file_a20668
 }
 
 /**
@@ -100,7 +90,6 @@ fun digitNumber(n: Int): Int {
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
 fun fib(n: Int): Int {
-<<<<<<< .merge_file_a18048
     var pred = 1
     var sled = 1
     var box: Int
@@ -114,20 +103,6 @@ fun fib(n: Int): Int {
     }
     return sled
 }
-=======
-    var num1 = 1
-    var num2 = 1
-    var numx = 0
-    for (i in 3..n) {
-        numx = num2
-        num2 += num1
-        num1 = numx
-
-    }
-    return num2
-}
-
->>>>>>> .merge_file_a20668
 
 /**
  * Простая (2 балла)
@@ -135,20 +110,10 @@ fun fib(n: Int): Int {
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
 fun minDivisor(n: Int): Int {
-<<<<<<< .merge_file_a18048
-    var d = 2
-    while (d * d <= n) {
-        if (n % d == 0) return d
-        d++
-    }
-    return if (n == d) d
-    else n
-=======
     var num = 2
     while (n % num != 0)
         num++
     return num
->>>>>>> .merge_file_a20668
 }
 
 /**
@@ -157,19 +122,12 @@ fun minDivisor(n: Int): Int {
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
 fun maxDivisor(n: Int): Int {
-<<<<<<< .merge_file_a18048
     var d = 2
     while (d * d <= n) {
         if (n % d == 0) return n / d
         d++
     }
     return 1
-=======
-    var num = n / 2
-    while (n % num != 0)
-        num--
-    return num
->>>>>>> .merge_file_a20668
 }
 
 /**
@@ -231,20 +189,7 @@ fun lcm(m: Int, n: Int): Int {
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-<<<<<<< .merge_file_a18048
-fun isCoPrime(m: Int, n: Int): Boolean {
-    if ((m == 1) || (n == 1)) return true
-    var d = 2
-    if (max(m, n) % min(m, n) == 0) return false
-    while (d * d <= min(m, n)) {
-        if ((min(m, n) % d == 0) && (max(m, n) % d == 0)) return false
-        d++
-    }
-    return true
-}
-=======
 fun isCoPrime(m: Int, n: Int): Boolean = TODO()
->>>>>>> .merge_file_a20668
 
 /**
  * Средняя (3 балла)
@@ -360,29 +305,6 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-<<<<<<< .merge_file_a18048
-
-fun squareSequenceDigit(n: Int): Int {
-    var s = 0
-    var i = 1.0
-    var box = 0
-    var ch = 0.0
-    while (s < n) {
-        s += digitNumber(i.pow(2.0).toInt())
-        box = digitNumber(i.pow(2.0).toInt())
-        ch = i.pow(2.0)
-        i += 1
-    }
-    s -= box
-    var gl = ch.toInt()
-    var mas = emptyArray<Int>()
-    while (gl > 0) {
-        mas += gl % 10
-        gl /= 10
-    }
-    mas.reverse()
-    return (mas[n - s - 1])
-=======
 fun squareSequenceDigit(n: Int): Int {
     var col = 0
     var num = 0
@@ -398,7 +320,6 @@ fun squareSequenceDigit(n: Int): Int {
         sqr /= 10
     }
     return sqr % 10
->>>>>>> .merge_file_a20668
 }
 
 /**
@@ -411,7 +332,6 @@ fun squareSequenceDigit(n: Int): Int {
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun fibSequenceDigit(n: Int): Int {
-<<<<<<< .merge_file_a18048
     var s = 0
     var pr = 0
     var box: Int
@@ -435,29 +355,3 @@ fun fibSequenceDigit(n: Int): Int {
     mas.reverse()
     return mas[n - s - 1]
 }
-=======
-    var col = 0
-    var num = 0
-    var fib = 0
-    while (col < n) {
-        num++
-        fib = fib(num)
-        col += digitNumber(fib)
-
-    }
-    while (col > n) {
-        col--
-        fib /= 10
-    }
-    return fib % 10
-}
-
-
-
-
-
-
-
-
-
->>>>>>> .merge_file_a20668
